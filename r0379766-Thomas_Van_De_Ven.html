@@ -30,7 +30,10 @@
         <div class="row">
           <div class="col-md-6">
             <label class="labelTitle" for="inputUsername">Gebruikersnaam</label>
-            <input type="text" class="form-control" id="inputUsername" placeholder="u911236">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">@</span>
+              <input type="text" class="form-control" placeholder="u911236" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
           </div>
           <div class="col-md-6">
             <label class="labelTitle" for="inputEmail">E-mailadres</label>
@@ -62,15 +65,28 @@
         <div class="row">
           <div class="form-group col-md-5">
               <label class="labelTitle" for="inputCountry">Land</label>
-              <input type="text" class="form-control" id="inputCountry" placeholder="Kies een land">
+              <select class="form-select countrypicker" data-flag="true" aria-label="Default select example"></select>           
             </div>
             <div class="form-group col-md-4">
               <label class="labelTitle" for="inputProvince">Provincie</label>
-              <input type="text" class="form-control" id="inputProvince" placeholder="Kies een provincie">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Kies een provincie</option>
+                <option value="1">Antwerpen</option>
+                <option value="2">Limburg</option>
+                <option value="3">Oost-Vlaanderen</option>
+                <option value="4">Vlaams-Brabant</option>
+                <option value="5">West-Vlaanderen</option>
+                <option value="6">Waals-Brabant</option>
+                <option value="7">Henegouwen</option>
+                <option value="8">Luik</option>
+                <option value="8">Luxemburg</option>
+                <option value="8">Namen</option>
+                <option value="9">Not Listed</option>
+              </select>
             </div>
             <div class="form-group col-md-3">
               <label class="labelTitle" for="inputZip">Postcode</label>
-              <input type="text" class="form-control" id="inputZip" placeholder="Enter zip code">
+              <input type="number" class="form-control form-icon-trailing" id="inputZip">
             </div>
         </div>
         <br>
@@ -135,6 +151,7 @@
             <button class="btn btn-primary btn-lg" id="btnBevestig" type="button">Wave your magic hand</button>
           </div>
         </div>
+        <br>
       </div>
       <div class="col-md-4">
         <div class="alert alert-primary" role="alert">
@@ -152,5 +169,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="r0379766-Thomas_Van_De_Ven.js"></script>
+  <script src="jquery-3.6.4.min.js"></script>
+  <script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
 </body>
 </html>
