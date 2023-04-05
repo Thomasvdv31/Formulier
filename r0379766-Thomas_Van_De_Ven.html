@@ -115,25 +115,25 @@
           <div class="form-group col-md-3">
             <h3 class="subTitle">Betaling</h3>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Banking App">
                   <label class="labelTitle" for="flexRadioDefault1">
                     Banking app
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Overschrijving">
                   <label class="labelTitle" for="flexRadioDefault2">
-                    Overshcrijving
+                    Overschrijving
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Visa Card">
                   <label class="labelTitle" for="flexRadioDefault2">
                     Visa card
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="PayPal">
                   <label class="labelTitle" for="flexRadioDefault2">
                     PayPal
                   </label>
@@ -154,7 +154,11 @@
         <br>
       </div>
       <div class="col-md-4">
-        <div class="alert alert-primary" id="alerts" role="alert" style="display: none;"></div>
+        <div class="alert alert-primary" id="alerts" role="alert" style="display: none;">
+        </div>
+        <div class="alert alert-primary" id="alertPayment" role="alert" style="display: none;">
+            <h3>BetalingsWijze</h3>
+        </div>
       </div>
     </div>
   </div>

@@ -4,6 +4,8 @@ let inputZip = document.querySelector("#inputZip");
 let flexCheckChecked = document.querySelector("#flexCheckChecked");
 let btnBevestig = document.querySelector("#btnBevestig");
 let alerts = document.querySelector("#alerts");
+let alertPayment = document.querySelector("#alertPayment");
+const radioBtns = document.getElementsByName('flexRadioDefault');
 const errors = [];
 btnBevestig.addEventListener("click", ValidateForm);
 
@@ -62,19 +64,9 @@ function ValidateForm(){
     CheckPC(inputZip);
     checkEmptyField(flexCheckChecked, "Je moet de algemene voorwaarden accepteren.");
 
-    if (errors.length === 0){
-        alerts.textContent = "Succes";
-        alerts.classList.add('alert', 'alert-success');
-        alerts.classList.remove('alert-danger');
-        $("#alerts").show();
-        
-    }
-    else{
-        alerts.innerHTML = errors.join('');
-        alerts.classList.add('alert', 'alert-danger');
-        alerts.classList.remove('alert-success');
-        $("#alerts").show();
-    }
+    AlertVisibility();
+
+    
     
 };
 
@@ -168,6 +160,59 @@ function CheckPC(veld){
     if (index > -1) {
       errors.splice(index, 1);
     }
+  }
+}
+
+function validatePayment(veld){
+  let currentPaymentInfo = document.getElementById("paymentText");
+      if (!currentPaymentInfo) {
+        currentPaymentInfo = document.createElement("p");
+        currentPaymentInfo.id = "paymentText";
+        alertPayment.appendChild(currentPaymentInfo);
+      }
+
+  for (let i = 0; i < veld.length; i++) {
+    if (veld[i].checked) {
+      
+      
+      currentPaymentInfo.textContent = `Je betalingswijze is ${veld[i].value}.`;
+      break;
+      
+    } 
+  }
+  $("#alertPayment").show();
+}
+
+function AlertVisibility(){
+  let currentTitle = document.getElementById("AlertTitleId");
+  let currentInfo = document.getElementById("AlertInfoId");
+
+  if(!currentTitle){
+    currentTitle =  document.createElement("h3");
+    currentTitle.id = "AlertTitleId";
+    alerts.appendChild(currentTitle);
+  }
+  if(!currentInfo){
+    currentInfo =  document.createElement("p");
+    currentInfo.id = "AlertInfoId";
+    alerts.appendChild(currentInfo);
+  }
+
+  if (errors.length === 0){
+    alerts.classList.add('alert', 'alert-success');
+    alerts.classList.remove('alert-danger');
+    currentTitle.textContent = "Goed gedaan!";
+    currentInfo.textContent = "Aww yeah, je werd geregistreerd.";
+    $("#alerts").show();
+    validatePayment(radioBtns);
+    
+  }
+  else{
+    currentTitle.textContent = "Yikes, Errors...";
+    currentInfo.innerHTML = errors.join('');
+    alerts.classList.add('alert', 'alert-danger');
+    alerts.classList.remove('alert-success');
+    $("#alerts").show();
   }
 }
 
