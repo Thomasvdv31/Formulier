@@ -63,16 +63,23 @@ function ValidateForm(){
              // I Would do it like the rest but since the assignment asked to return a boolean i have to do it this way.
              const isValid = ValidateEmail(x);
              checkEmptyField(x, emptyField.inputEmail);
-             if (!isValid) {
-                 AddErrorToArray(invalid.inputEmail);
-             } else {
-                 RemoveErrorFromArray(invalid.inputEmail);
+             if (!errors.includes(emptyField.inputEmail)){
+                if (!isValid) {
+                  AddErrorToArray(invalid.inputEmail);
+                } else {
+                  RemoveErrorFromArray(invalid.inputEmail);
+                }
              }
              break;
          case "inputPassword":
               // Check if the password field is empty, validate the password length, and check if the password matches the repeated password
              checkEmptyField(x, emptyField.inputPassword);
-             ValideerWachtwoord(x, invalid.inputPasswordLength, invalid.inputPasswordMatch);
+             // Check if the "errors" array does not contain the value of "emptyField.inputPassword" If it doesnt have it then show other Validation.
+             // We only show other Validation when the form is filled in.
+             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+             if (!errors.includes(emptyField.inputPassword)){
+              ValideerWachtwoord(x, invalid.inputPasswordLength, invalid.inputPasswordMatch);
+             }
              break;
          case "inputRepeatPassword":
              // Check if the RepeatPassword field is empty and add an error message if necessary.
@@ -96,9 +103,10 @@ function ValidateForm(){
     // Check if the zip code field is empty and add an error message if necessary.
     checkEmptyField(inputZip, emptyField.inputZip);
     
-    // Check if the zip code is in a valid format and add an error message if necessary.
-    CheckPC(inputZip);
-    
+    // Check if the field is filled. If it is then we can show the Error to the user. If not then we only show the empty field Error.
+    if (!errors.includes(emptyField.inputZip)){
+      CheckPC(inputZip); // Check if the zip code is in a valid format and add an error message if necessary.
+     }
     // Check if the "terms and conditions" checkbox is empty and add an error message if necessary.
     checkEmptyField(checkVoorwaarden, emptyField.checkVoorwaarden);
     
